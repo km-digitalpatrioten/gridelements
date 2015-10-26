@@ -81,7 +81,6 @@ define(['jquery', 'jquery-ui/sortable', 'jquery-ui/droppable'], function($) {
 		// Hide create new element button
 		$element.children(DragDrop.dropZoneIdentifier).addClass('drag-start');
 		$element.closest(DragDrop.columnIdentifier).removeClass('active');
-		$('#new-element-drag-in-wizard').addClass('dragged');
 
 		$element.parents(DragDrop.columnHolderIdentifier).find(DragDrop.addContentIdentifier).hide();
 		$element.find(DragDrop.dropZoneIdentifier).hide();
@@ -112,7 +111,6 @@ define(['jquery', 'jquery-ui/sortable', 'jquery-ui/droppable'], function($) {
 		$element.closest(DragDrop.columnIdentifier).addClass('active');
 		$element.parents(DragDrop.columnHolderIdentifier).find(DragDrop.addContentIdentifier).show();
 		$element.find(DragDrop.dropZoneIdentifier).show();
-		$('#new-element-drag-in-wizard').removeClass('dragged');
 		$(DragDrop.dropZoneIdentifier + '.' + DragDrop.validDropZoneClass).removeClass(DragDrop.validDropZoneClass);
 	};
 
@@ -125,6 +123,7 @@ define(['jquery', 'jquery-ui/sortable', 'jquery-ui/droppable'], function($) {
 	DragDrop.onDropHoverOver = function($draggableElement, $droppableElement) {
 		if ($droppableElement.hasClass(DragDrop.validDropZoneClass)) {
 			$droppableElement.addClass(DragDrop.dropPossibleHoverClass);
+			$draggableElement.addClass(DragDrop.dropPossibleHoverClass);
 		}
 	};
 
@@ -136,6 +135,7 @@ define(['jquery', 'jquery-ui/sortable', 'jquery-ui/droppable'], function($) {
 	 */
 	DragDrop.onDropHoverOut = function($draggableElement, $droppableElement) {
 		$droppableElement.removeClass(DragDrop.dropPossibleHoverClass);
+		$draggableElement.removeClass(DragDrop.dropPossibleHoverClass);
 	};
 
 	/**
@@ -154,6 +154,7 @@ define(['jquery', 'jquery-ui/sortable', 'jquery-ui/droppable'], function($) {
 		}
 
 		$droppableElement.removeClass(DragDrop.dropPossibleHoverClass);
+		$draggableElement.removeClass(DragDrop.dropPossibleHoverClass);
 
 		// send an AJAX requst via the AjaxDataHandler
 		var contentElementUid = parseInt($draggableElement.data('uid'));
