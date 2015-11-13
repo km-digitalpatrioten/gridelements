@@ -1,5 +1,5 @@
 {
-  "name": "GridElementsTeam/Gridelements",
+  "name": "gridelementsteam/gridelements",
   "description": "This extension integrates the grid layout concept to regular content elements.",
   "autoload": {
     "psr-4": {
